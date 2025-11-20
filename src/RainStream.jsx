@@ -11,6 +11,7 @@ const MatrixRainingCode = () => {
     let height = (canvas.height = window.innerHeight);
     let columns = Math.floor(width / 20); // Number of columns based on character width
     const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+    //
     const charArray = characters.split("");
     let drops = [];
 
@@ -27,7 +28,10 @@ const MatrixRainingCode = () => {
       ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = "#0f0"; // Green color for characters
+      //ctx.fillStyle = "#0f0"; // Green color for characters
+      //ctx.fillStyle = "#f00"; // Red color for characters
+      //ctx.fillStyle = "#f0f"; // Purple color for characters
+      ctx.fillStyle = getRandomColor(); // multi-color
 
       // Draw the characters
       ctx.font = "15px monospace";
@@ -69,6 +73,13 @@ const MatrixRainingCode = () => {
         drops[i] = 1;
       }
     };
+
+  const colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
+  //const colors = ["#800000 ", "#FFAA33", "#CC5500", "#FFDB58", "#8B4819", "#FFBF00"];
+
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
 
     // Check if the user is on a mobile device before handling resize and scroll events
     const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
